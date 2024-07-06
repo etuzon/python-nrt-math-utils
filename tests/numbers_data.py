@@ -51,7 +51,9 @@ equal_operator_data = [
     (DecimalNumber(0), DecimalNumber(0)),
     (DecimalNumber(0), 0),
     (DecimalNumber(9), 9),
-    (DecimalNumber(-9.555), -9.555)
+    (DecimalNumber(-9.555), -9.555),
+    (5, DecimalNumber(5)),
+    (0, DecimalNumber(0))
 ]
 
 equal_operator_negative_data = [
@@ -69,7 +71,9 @@ different_operator_data = [
     (DecimalNumber(0), DecimalNumber(0.1)),
     (DecimalNumber(0), -0.01),
     (DecimalNumber(9), 19),
-    (DecimalNumber(-9.555), 9.555)
+    (DecimalNumber(-9.555), 9.555),
+    (5, DecimalNumber(5.1)),
+    (0, DecimalNumber(0.1))
 ]
 
 different_operator_negative_data = [

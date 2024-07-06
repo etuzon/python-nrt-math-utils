@@ -1,6 +1,6 @@
 import os
 
-import nrt_collections_utils
+import nrt_math_utils
 from tests.tests_suite import TestsSuite
 
 PATH = os.path.dirname(__file__)
@@ -15,9 +15,9 @@ def __replace_pyproject_version():
     for i, line in enumerate(file_lines):
         if line.startswith('version'):
             version = line.split('=')[1]
-            if version != nrt_collections_utils.__version__:
+            if version != nrt_math_utils.__version__:
                 is_replace = True
-                file_lines[i] = f"version='{nrt_collections_utils.__version__}'"
+                file_lines[i] = f"version='{nrt_math_utils.__version__}'"
                 break
 
     if is_replace:
