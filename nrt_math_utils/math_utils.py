@@ -25,8 +25,8 @@ class MathUtil:
 
         numbers_weighted = DecimalNumber(0)
 
-        for i in range(len(numbers)):
-            numbers_weighted += numbers[i] * weights[i]
+        for i, number in enumerate(numbers):
+            numbers_weighted += number * weights[i]
 
         return numbers_weighted / DecimalNumber(sum(weights))
 
@@ -37,13 +37,10 @@ class MathUtil:
 
     @staticmethod
     def is_all_numbers(elements: list) -> bool:
-        for item in elements:
-            if not isinstance(item, Number) \
-                    and not isinstance(item, DecimalNumber) \
-                    or isinstance(item, bool):
-                return False
-
-        return True
+        return \
+            all((isinstance(item, Number) or isinstance(item, DecimalNumber))
+                and not isinstance(item, bool)
+                for item in elements)
 
     @classmethod
     def max(cls, *elements):

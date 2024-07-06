@@ -13,6 +13,9 @@ class DecimalNumber:
     __number: Optional[float] = None
     __local_perc: Optional[int] = None
 
+    # PYL-W1641
+    __hash__ = None
+
     def __init__(self, number, perc: int = None):
         if perc is not None:
             self.__local_perc = perc
@@ -83,7 +86,7 @@ class DecimalNumber:
         if CollectionsUtil.is_iter(other):
             return \
                 DecimalNumber(
-                    sum([float(num) for num in other]) + self.__number,
+                    sum(float(num) for num in other) + self.__number,
                     perc=self.__local_perc)
 
         return DecimalNumber(float(other) + self.__number, perc=self.__local_perc)
