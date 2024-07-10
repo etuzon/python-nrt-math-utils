@@ -2,7 +2,8 @@ import pytest
 
 from nrt_math_utils.math_utils import MathUtil
 from nrt_math_utils.nrt_numbers import DecimalNumber
-from tests.math_utils_data import average_data, max_data, min_data, floor_data
+from tests.math_utils_data import average_data, max_data, min_data, floor_data, \
+    sum_0_to_n_data
 
 
 @pytest.mark.parametrize('numbers, weights, expected_average', average_data)
@@ -55,3 +56,8 @@ def test_max(numbers, expected_max):
 def test_min(numbers, expected_min):
     min_num = MathUtil.min(*numbers)
     assert min_num == expected_min
+
+
+@pytest.mark.parametrize('n, expected_sum', sum_0_to_n_data)
+def test_sum_0_to_n(n, expected_sum):
+    assert MathUtil.sum_0_to_n(n) == expected_sum
