@@ -2,7 +2,7 @@
     "meta": {
         "format": 2,
         "version": "7.5.3",
-        "timestamp": "2024-07-06T14:53:21.204699",
+        "timestamp": "2024-07-10T22:26:54.125096",
         "branch_coverage": true,
         "show_contexts": false
     },
@@ -67,18 +67,21 @@
                 63,
                 64,
                 65,
-                66
+                67,
+                68,
+                69,
+                70
             ],
             "summary": {
-                "covered_lines": 37,
-                "num_statements": 37,
+                "covered_lines": 40,
+                "num_statements": 40,
                 "percent_covered": 100.0,
                 "percent_covered_display": "100",
                 "missing_lines": 0,
                 "excluded_lines": 0,
-                "num_branches": 26,
+                "num_branches": 28,
                 "num_partial_branches": 0,
-                "covered_branches": 26,
+                "covered_branches": 28,
                 "missing_branches": 0
             },
             "missing_lines": [],
@@ -186,19 +189,27 @@
                 ],
                 [
                     64,
-                    -10
-                ],
-                [
-                    64,
                     63
                 ],
                 [
-                    65,
-                    -63
+                    64,
+                    67
                 ],
                 [
-                    65,
-                    66
+                    68,
+                    -10
+                ],
+                [
+                    68,
+                    67
+                ],
+                [
+                    69,
+                    -67
+                ],
+                [
+                    69,
+                    70
                 ]
             ],
             "missing_branches": []
@@ -426,15 +437,15 @@
         }
     },
     "totals": {
-        "covered_lines": 127,
-        "num_statements": 127,
+        "covered_lines": 130,
+        "num_statements": 130,
         "percent_covered": 100.0,
         "percent_covered_display": "100",
         "missing_lines": 0,
         "excluded_lines": 0,
-        "num_branches": 52,
+        "num_branches": 54,
         "num_partial_branches": 0,
-        "covered_branches": 52,
+        "covered_branches": 54,
         "missing_branches": 0
     }
 }

@@ -30,8 +30,8 @@ class MathUtil:
 
         return numbers_weighted / DecimalNumber(sum(weights))
 
-    @classmethod
-    def floor(cls, number, digits: int):
+    @staticmethod
+    def floor(number, digits: int):
         denominator = 10 ** digits
         return type(number)(floor(number * denominator) / denominator)
 
@@ -42,8 +42,8 @@ class MathUtil:
                 and not isinstance(item, bool)
                 for item in elements)
 
-    @classmethod
-    def max(cls, *elements):
+    @staticmethod
+    def max(*elements):
         num_list = [
             num for num in CollectionsUtil.deep_args_to_list(elements)
             if num is not None
@@ -51,14 +51,18 @@ class MathUtil:
 
         return max(num_list) if num_list else None
 
-    @classmethod
-    def min(cls, *elements):
+    @staticmethod
+    def min(*elements):
         num_list = [
             num for num in CollectionsUtil.deep_args_to_list(elements)
             if num is not None
         ]
 
         return min(num_list) if num_list else None
+
+    @staticmethod
+    def sum_0_to_n(n: int) -> int:
+        return n * (n + 1) // 2
 
     @classmethod
     def __verify_all_list_are_numbers(cls, elements: list):

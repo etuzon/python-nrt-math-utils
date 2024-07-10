@@ -1,5 +1,10 @@
 # nrt-math-utils
 
+## Version 1.0.2
+
+- Add `MathUtil.sum_0_to_n` function.
+- Fix README.md.
+
 ## Version 1.0.1
 
 Fix bugs.
