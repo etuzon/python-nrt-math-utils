@@ -38,7 +38,7 @@ class MathUtil:
     @staticmethod
     def is_all_numbers(elements: list) -> bool:
         return \
-            all((isinstance(item, Number) or isinstance(item, DecimalNumber))
+            all(isinstance(item, (Number, DecimalNumber))
                 and not isinstance(item, bool)
                 for item in elements)
 
