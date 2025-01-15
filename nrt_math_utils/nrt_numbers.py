@@ -9,23 +9,33 @@ class DecimalNumber:
     DEFAULT_PERC = 6
 
     __perc: int = DEFAULT_PERC
+    __is_thousands_separator: bool = False
 
     __number: Optional[float] = None
     __local_perc: Optional[int] = None
+    __local_is_thousands_separator: Optional[bool] = None
 
     # PYL-W1641
     __hash__ = None
 
-    def __init__(self, number, perc: int = None):
-        if perc is not None:
-            self.__local_perc = perc
+    def __init__(self, number, perc: int = None, is_thousands_separator: bool = None):
+
+        self.__local_perc = DecimalNumber.__perc if perc is None else perc
+
+        if is_thousands_separator is not None:
+            self.__local_is_thousands_separator = is_thousands_separator
         else:
-            self.__local_perc = DecimalNumber.__perc
+            self.__local_is_thousands_separator = DecimalNumber.__is_thousands_separator
 
         self.__number = round(float(number), self.__local_perc)
 
-    def get_perc(self=None):
+    def get_perc(self=None) -> Optional[int]:
         return self.__local_perc if self else DecimalNumber.__perc
+
+    def get_thousands_separator(self=None) -> Optional[str]:
+        return \
+            self.__local_is_thousands_separator \
+            if self else DecimalNumber.__is_thousands_separator
 
     @property
     def number(self) -> float:
@@ -107,6 +117,17 @@ class DecimalNumber:
         return DecimalNumber(float(other) / self.__number, perc=self.__local_perc)
 
     def __str__(self):
+        if self.__local_is_thousands_separator:
+            number_str = \
+                f'{self.number:,.{self.__local_perc}f}'
+
+            number_str = number_str.rstrip('0')
+
+            if number_str.endswith('.'):
+                return number_str + '0'
+
+            return number_str
+
         return str(self.number)
 
     def __setattr__(self, key, value):
@@ -121,6 +142,14 @@ class DecimalNumber:
     @classmethod
     def set_perc(cls, perc: int):
         cls.__perc = perc
+
+    @classmethod
+    def set_thousands_separator(cls):
+        cls.__is_thousands_separator = True
+
+    @classmethod
+    def unset_thousands_separator(cls):
+        cls.__is_thousands_separator = False
 
     @classmethod
     def dict_with_decimal_to_dict_with_float(cls, dict_: dict) -> dict:
@@ -139,3 +168,11 @@ class DecimalNumber:
 
 def set_decimal_number_perc(perc: int):
     DecimalNumber.set_perc(perc)
+
+
+def set_decimal_number_thousands_separator():
+    DecimalNumber.set_thousands_separator()
+
+
+def unset_decimal_number_thousands_separator():
+    DecimalNumber.unset_thousands_separator()
