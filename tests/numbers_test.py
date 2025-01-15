@@ -1,13 +1,14 @@
 import pytest
 
-from nrt_math_utils.nrt_numbers import set_decimal_number_perc, DecimalNumber
+from nrt_math_utils.nrt_numbers import set_decimal_number_perc, DecimalNumber, \
+    set_decimal_number_thousands_separator, unset_decimal_number_thousands_separator
 from tests.numbers_data import \
     add_data, sub_data, multiple_data, truediv_data, pow_data, \
     equal_operator_data, equal_operator_negative_data, different_operator_data, \
     different_operator_negative_data, gt_operator_data, gt_operator_negative_data, \
     lt_operator_data, lt_operator_negative_data, ge_operator_data, \
     ge_operator_negative_data, le_operator_data, le_operator_negative_data, abs_data, \
-    round_data, negative_data, int_data, radd_data
+    round_data, negative_data, int_data, radd_data, thousands_separator_data
 
 
 @pytest.fixture(autouse=True)
@@ -218,3 +219,34 @@ def test_rmul():
 
 def test_rtruediv():
     assert DecimalNumber(6) == 18.0 / DecimalNumber(3)
+
+
+def test_set_thousands_separator_update_separator_globally():
+    assert str(DecimalNumber(1234567.89)) == '1234567.89'
+    assert str(DecimalNumber(-1234567.89)) == '-1234567.89'
+
+    set_decimal_number_thousands_separator()
+
+    try:
+        assert str(DecimalNumber(1234567.89)) == '1,234,567.89'
+        assert str(DecimalNumber(-1234567.89)) == '-1,234,567.89'
+        assert str(DecimalNumber(12)) == '12.0'
+        assert str(DecimalNumber(-12)) == '-12.0'
+        assert str(DecimalNumber(12000)) == '12,000.0'
+        assert str(DecimalNumber(-12000)) == '-12,000.0'
+        assert str(DecimalNumber(1.123)) == '1.123'
+        assert str(DecimalNumber(-1.123)) == '-1.123'
+    finally:
+        unset_decimal_number_thousands_separator()
+        assert str(DecimalNumber(1234)) == '1234.0'
+
+
+@pytest.mark.parametrize('num, expected_str', thousands_separator_data)
+def test_set_thousands_separator_update_separator_locally(num, expected_str):
+    assert str(num) == expected_str
+
+
+def test_set_thousands_separator_locally_false_globally_true():
+    unset_decimal_number_thousands_separator()
+    num = DecimalNumber(1234567.89, is_thousands_separator=True)
+    assert str(num) == '1,234,567.89'

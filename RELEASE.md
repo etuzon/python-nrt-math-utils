@@ -1,5 +1,9 @@
 # nrt-math-utils
 
+## Version 1.0.4
+
+DecimalNumber support thousands separator.
+
 ## Version 1.0.3
 
 Support Python 3.13.

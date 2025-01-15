@@ -205,3 +205,13 @@ radd_data = [
         DecimalNumber(-22)),
     ((DecimalNumber(11), DecimalNumber(10)), DecimalNumber(21))
 ]
+
+thousands_separator_data = [
+    (DecimalNumber(123456789.123456189, is_thousands_separator=True),
+     '123,456,789.123456'),
+    (DecimalNumber(123456789, is_thousands_separator=True), '123,456,789.0'),
+    (DecimalNumber(-123456789, is_thousands_separator=True), '-123,456,789.0'),
+    (DecimalNumber(123456789.1, is_thousands_separator=True), '123,456,789.1'),
+    (DecimalNumber(9.1, is_thousands_separator=True), '9.1'),
+    (DecimalNumber(-9.1, is_thousands_separator=True), '-9.1')
+]
