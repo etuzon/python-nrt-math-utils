@@ -38,8 +38,7 @@ class MathUtil:
     @staticmethod
     def is_all_numbers(elements: list) -> bool:
         return \
-            all(isinstance(item, (Number, DecimalNumber))
-                and not isinstance(item, bool)
+            all(isinstance(item, (Number, DecimalNumber)) and not isinstance(item, bool)
                 for item in elements)
 
     @staticmethod
@@ -67,5 +66,4 @@ class MathUtil:
     @classmethod
     def __verify_all_list_are_numbers(cls, elements: list):
         if not cls.is_all_numbers(elements):
-            raise ValueError(
-                f'Not all numbers in list [{elements}] are numbers.')
+            raise ValueError(f'Not all numbers in list [{elements}] are numbers.')

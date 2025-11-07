@@ -96,8 +96,7 @@ class DecimalNumber:
         if CollectionsUtil.is_iter(other):
             return \
                 DecimalNumber(
-                    sum(float(num) for num in other) + self.__number,
-                    perc=self.__local_perc)
+                    sum(float(num) for num in other) + self.__number, perc=self.__local_perc)
 
         return DecimalNumber(float(other) + self.__number, perc=self.__local_perc)
 
@@ -118,8 +117,7 @@ class DecimalNumber:
 
     def __str__(self):
         if self.__local_is_thousands_separator:
-            number_str = \
-                f'{self.number:,.{self.__local_perc}f}'
+            number_str = f'{self.number:,.{self.__local_perc}f}'
 
             number_str = number_str.rstrip('0')
 
@@ -131,6 +129,7 @@ class DecimalNumber:
         return str(self.number)
 
     def __setattr__(self, key, value):
+
         if key == '_DecimalNumber__number':
             self.__dict__[key] = round(float(value), self.__get_perc())
         else:
