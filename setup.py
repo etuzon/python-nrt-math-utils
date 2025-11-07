@@ -1,7 +1,7 @@
 import os
 from setuptools import setup
-
 import nrt_math_utils
+
 
 PATH = os.path.dirname(__file__)
 
@@ -17,9 +17,9 @@ setup(
     author='Eyal Tuzon',
     author_email='eyal.tuzon.dev@gmail.com',
     description='Math utilities in Python',
-    keywords='python python3 python-3 tool tools math mathematics utilities utils util'
-             ' nrt nrt-utils nrt-utilities math-utils math-utilities'
-             ' nrt-utilities nrt-math-utils nrt-math-utilities',
+    keywords='python python3 python-3 tool tools math mathematics utilities utils util nrt'
+             ' nrt-utils nrt-utilities math-utils math-utilities nrt-utilities nrt-math-utils'
+             ' nrt-math-utilities',
     long_description_content_type='text/markdown',
     long_description=readme,
     url='https://github.com/etuzon/python-nrt-math-utils',
@@ -31,6 +31,7 @@ setup(
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3.12',
         'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.14',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],

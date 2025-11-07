@@ -22,15 +22,13 @@ def setup():
 @pytest.mark.parametrize('num1, num2, expected_result', add_data)
 def test_add(num1, num2, expected_result):
     result = num1 + num2
-    assert result == expected_result, \
-           f'Result is {result}, but it should be {expected_result}'
+    assert result == expected_result, f'Result is {result}, but it should be {expected_result}'
 
 
 @pytest.mark.parametrize('num1, num2, expected_result', sub_data)
 def test_sub(num1, num2, expected_result):
     result = num1 - num2
-    assert result == expected_result, \
-           f'Result is {result}, but it should be {expected_result}'
+    assert result == expected_result, f'Result is {result}, but it should be {expected_result}'
 
 
 def test_str():
@@ -41,22 +39,19 @@ def test_str():
 @pytest.mark.parametrize('num1, num2, expected_result', multiple_data)
 def test_multiple(num1, num2, expected_result):
     result = num1 * num2
-    assert result == expected_result, \
-           f'Result is {result}, but it should be {expected_result}'
+    assert result == expected_result, f'Result is {result}, but it should be {expected_result}'
 
 
 @pytest.mark.parametrize('num1, num2, expected_result', truediv_data)
 def test_truediv(num1, num2, expected_result):
     result = num1 / num2
-    assert result == expected_result, \
-           f'Result is {result}, but it should be {expected_result}'
+    assert result == expected_result, f'Result is {result}, but it should be {expected_result}'
 
 
 @pytest.mark.parametrize('num1, num2, expected_result', pow_data)
 def test_pow(num1, num2, expected_result):
     result = num1 ** num2
-    assert result == expected_result, \
-           f'Result is {result}, but it should be {expected_result}'
+    assert result == expected_result, f'Result is {result}, but it should be {expected_result}'
 
 
 @pytest.mark.parametrize('num1, num2', equal_operator_data)
@@ -148,9 +143,9 @@ def test_perc():
 @pytest.mark.parametrize('num, digits, expected_result', round_data)
 def test_round(num, digits, expected_result):
     result = round(num, digits)
-    assert result == expected_result, \
-           f'Result of round {num} with {digits} digits is {result},' \
-           f' but should be {expected_result}'
+    assert \
+        result == expected_result, \
+        f'Result of round {num} with {digits} digits is {result}, but should be {expected_result}'
 
 
 @pytest.mark.parametrize('num, expected_result', negative_data)
